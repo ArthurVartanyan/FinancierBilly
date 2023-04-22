@@ -1,0 +1,6 @@
+CREATE TABLE income
+(
+    id        BIGSERIAL PRIMARY KEY,
+    amount    NUMERIC   NOT NULL,
+    date_time TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+);

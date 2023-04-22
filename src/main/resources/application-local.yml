@@ -1,0 +1,8 @@
+#Spring
+spring:
+  datasource:
+    name: 'financier_billy'
+    url: 'jdbc:postgresql://localhost:5432/financier_billy'
+    username: 'postgres'
+    password: 'a7bgkKsr'
+    driverClassName: 'org.postgresql.Driver'
