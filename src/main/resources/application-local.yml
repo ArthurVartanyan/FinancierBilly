@@ -6,3 +6,6 @@ spring:
     username: 'postgres'
     password: 'a7bgkKsr'
     driverClassName: 'org.postgresql.Driver'
+  jackson:
+    serialization:
+      indent_output: true

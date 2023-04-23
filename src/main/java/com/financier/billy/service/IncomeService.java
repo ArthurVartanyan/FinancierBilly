@@ -1,7 +1,7 @@
 package com.financier.billy.service;
 
 import com.financier.billy.dto.IncomeDTO;
-import com.financier.billy.exception.NotFoundException;
+import com.financier.billy.exception.runtime.NotFoundException;
 import com.financier.billy.mapper.IncomeMapper;
 import com.financier.billy.model.Income;
 import com.financier.billy.repository.IncomeRepository;
@@ -48,7 +48,7 @@ public class IncomeService {
     public void deleteIncome(Long incomeId) {
         Income income = incomeRepository
                 .findById(incomeId)
-                .orElseThrow(() -> new NotFoundException("Income with id: " + incomeId + " not found!"));
+                .orElseThrow(() -> new NotFoundException("Income with id " + incomeId + " is not found!"));
         income.setDeleted(true);
         incomeRepository.save(income);
     }
@@ -57,7 +57,7 @@ public class IncomeService {
         return incomeMapper.map(incomeRepository
                         .findById(incomeId)
                         .orElseThrow(() ->
-                                new NotFoundException("Income with id: " + incomeId + " not found!")),
+                                new NotFoundException("Income with id " + incomeId + " is not found!")),
                 IncomeDTO.class);
     }
 }

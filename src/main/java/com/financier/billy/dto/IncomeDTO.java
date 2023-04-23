@@ -13,4 +13,6 @@ public class IncomeDTO {
     private BigDecimal amount;
 
     private LocalDateTime dateTime;
+
+    private Long userId;
 }

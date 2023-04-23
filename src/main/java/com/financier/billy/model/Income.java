@@ -31,6 +31,9 @@ public class Income {
     @Column(name = "date_time")
     private LocalDateTime dateTime;
 
+    @Column(name = "user_id")
+    private Long userId;
+
     @Column(name = "is_deleted")
     private boolean deleted;
 }
