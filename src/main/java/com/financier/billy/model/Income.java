@@ -34,6 +34,10 @@ public class Income {
     @Column(name = "user_id")
     private Long userId;
 
+    @JoinColumn(name = "user_id", insertable = false, updatable = false)
+    @ManyToOne(targetEntity = User.class, fetch = FetchType.EAGER)
+    private User user;
+
     @Column(name = "is_deleted")
     private boolean deleted;
 }

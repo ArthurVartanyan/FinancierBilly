@@ -1,6 +1,6 @@
 CREATE TABLE public.pg_user
 (
-    id BIGINT PRIMARY KEY NOT NULL
+    id BIGSERIAL PRIMARY KEY NOT NULL
 );
 
 ALTER TABLE income

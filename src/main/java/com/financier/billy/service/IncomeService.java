@@ -14,6 +14,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class IncomeService {
 
+    private final UserService userService;
     private final IncomeMapper incomeMapper;
     private final IncomeRepository incomeRepository;
 
@@ -23,12 +24,16 @@ public class IncomeService {
      * @param incomeDTO - income data transfer object.
      * @return - new income ID.
      */
-    public Long addNewIncome(IncomeDTO incomeDTO) {
+    public IncomeDTO addNewIncome(IncomeDTO incomeDTO) {
+        if (!userService.userExistsById(incomeDTO.getUserId())) {
+            throw new NotFoundException("User with id " + incomeDTO.getUserId() + " is not found!");
+        }
         Income income = Income.builder()
                 .amount(incomeDTO.getAmount())
                 .dateTime(incomeDTO.getDateTime())
+                .userId(incomeDTO.getUserId())
                 .build();
-        return incomeRepository.save(income).getId();
+        return incomeMapper.map(incomeRepository.save(income), IncomeDTO.class);
     }
 
     /**
